@@ -36,7 +36,15 @@ const nextMove = (player) => {
                 console.log('The Game is a Tie')
                 printBoard(board)
                 rl.close()
-            }
+            } else{
+                // This is for switching the turns between X and O
+                nextMove(player === 'X' ? 'O' : 'X')
+
+            } 
+        } else {
+            console.log('Spot already taken by other player, try again.')
+            // This person needs to be told again if their move is wrong
+            nextMove(player)
         }
     })
 }
