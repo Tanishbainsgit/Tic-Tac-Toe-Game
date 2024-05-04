@@ -15,6 +15,28 @@ const printBoard = (board) => {
         console.log(row.join('|')))
         // This is for add a newline for the better seperation.
     console.log('\n')
+
      
 }
 
+// This function is for informing the player about their next move and then how to execute it.
+const nextMove = (player) => {
+    printBoard(board)
+    rl.questions(`player $(player) (X/O), enter your move (row,col)`, input => {
+    // This is for convert the input to the number indices
+        const[row,col] = input.split(',').map(number)
+        if(board[row,col] === ' ') {
+            //This is for updation of the board if nay spot is left empty
+            board[row,col] = player
+            if (checkWin(player)) {
+                console.log(`Congratulation! Player $(player) Wins!`)
+                printBoard(board)
+                rl.close()
+            } else if (board.flat().every(cell => cell !== ' ')) {
+                console.log('The Game is a Tie')
+                printBoard(board)
+                rl.close()
+            }
+        }
+    })
+}
