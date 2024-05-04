@@ -10,5 +10,11 @@ const rl = readline.createInterface({
 const initializeBoard = () => Array.from({ length: 3}, () => Array(3).fill(' '))
 
 const printBoard = (board) => {
-    
+    console.log('\n board state')
+    board.forEach(row => 
+        console.log(row.join('|')))
+        // This is for add a newline for the better seperation.
+    console.log('\n')
+     
 }
+
