@@ -50,7 +50,7 @@ const nextMove = (player) => {
 }
 
 // This function determines whether there is a winning outcomes based on the current satete of the board.
-const checkWin = (player)
+const checkWin = (player) {
 const lines = [
     // Rows
     [board[0][0], board[0][1], board[0][2]]
@@ -64,5 +64,14 @@ const lines = [
     [board[0][0], board[1][1], board[2][2]]
     [board[0][2], board[1][1], board[2][0]]
 
-
 ]
+
+// Make sure that each cell in each line matches the current player.
+return lines.some(line => line.every(cell => cell === player))
+
+}
+
+// Start the game 
+let board = initializeBoard()
+// This if for begin the game with the player X
+nextMove('X')
