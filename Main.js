@@ -35,7 +35,7 @@ const nextMove = (player) => {
             } else if (board.flat().every(cell => cell !== ' ')) {
                 console.log('The Game is a Tie')
                 printBoard(board)
-                rl.close()
+                rl.close()()
             } else{
                 // This is for switching the turns between X and O
                 nextMove(player === 'X' ? 'O' : 'X')
@@ -46,7 +46,7 @@ const nextMove = (player) => {
             // This person needs to be told again if their move is wrong
             nextMove(player)
         }
-    })
+    }) 
 }
 
 // This function determines whether there is a winning outcomes based on the current satete of the board.
